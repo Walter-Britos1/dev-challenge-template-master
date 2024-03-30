@@ -1,28 +1,7 @@
-import { useState,  useEffect } from 'react';
-import { useLazyQuery } from '@apollo/client';
-import { FILTER_CHARACTERS } from '../../graphql/queries';
+import useFilter from "../../hooks/useFilter";
 
 const Filter = ({ onFilterApply }) => {
-  const [filterValues, setFilterValues] = useState({ status: '', species: '', gender: '' });
-  const [filter, { data: filterData }] = useLazyQuery(FILTER_CHARACTERS);
-
-  const handleFilterChange = (event) => {
-    setFilterValues({
-      ...filterValues,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const applyFilters = () => {
-    filter({ variables: filterValues });
-  };
-
-  useEffect(() => {
-    if (filterData) {
-      onFilterApply(filterData.characters.results);
-    }
-  }, [filterData, onFilterApply]);
-
+  const { handleFilterChange, applyFilters } = useFilter({ onFilterApply })
 
   return (
     <div>
