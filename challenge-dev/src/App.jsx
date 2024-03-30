@@ -1,11 +1,13 @@
-import SearchBar from "./components/SearchBar/SearchBar"
+
+import Home from './components/Home/Home';
 
 
 function App() {
 
+
   return (
     <div>
-      <SearchBar />
+      <Home />
     </div>
   )
 }

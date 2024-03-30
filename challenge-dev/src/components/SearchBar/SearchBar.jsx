@@ -1,10 +1,23 @@
+import { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { SEARCH_CHARACTER  } from '../../graphql/queries';
+import { ALL_CHARACTERS, SEARCH_CHARACTER } from '../../graphql/queries';
 import Card from '../Card/Card';
+import Filter from "../Filters/Filter"
 
 const SearchBar = () => {
-  const [search, { data }] = useLazyQuery(SEARCH_CHARACTER);
-  console.log(data);
+  const [getAll, { data: allData }] = useLazyQuery(ALL_CHARACTERS);
+  const [search, { data: searchData }] = useLazyQuery(SEARCH_CHARACTER);
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    getAll({ variables: { page: 1 } });
+  }, [getAll]);
+
+  useEffect(() => {
+    if (allData) {
+      setResults(allData.characters.results);
+    }
+  }, [allData]);
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -14,13 +27,21 @@ const SearchBar = () => {
     search({ variables: { name } });
   };
 
+
+  useEffect(() => {
+    if (searchData) {
+      setResults(searchData.characters.results);
+    }
+  }, [searchData]);
+
   return (
     <form onSubmit={handleSearch}>
       <input type="search" name="name" placeholder="Search character.." />
       <button type="submit">Search</button>
-      {data && data.characters.results.map(character => (
-      <Card key={character.id} character={character} />
-    ))}
+      <Filter onFilterApply={setResults}/>
+      {results.map(character => (
+        <Card key={character.id} character={character} />
+      ))}
     </form>
   );
 };
