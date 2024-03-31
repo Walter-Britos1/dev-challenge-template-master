@@ -22,4 +22,4 @@ const useHome = () => {
   return { characters, loading, error };
 }
 
-export default useHome
+export default useHome;

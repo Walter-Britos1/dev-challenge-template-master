@@ -7,6 +7,7 @@ const useSearchBar = () => {
   const [search, { data: searchData }] = useLazyQuery(SEARCH_CHARACTER);
   const [results, setResults] = useState([]);
 
+
   useEffect(() => {
     getAll({ variables: { page: 1 } });
   }, [getAll]);
