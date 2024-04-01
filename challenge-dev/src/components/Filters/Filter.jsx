@@ -4,7 +4,7 @@ const Filter = ({ onFilterApply }) => {
   const { handleFilterChange, applyFilters } = useFilter({ onFilterApply });
 
   return (
-    <div>
+    <div className="flex items-center space-x-2">
       <div>
         <label htmlFor="status">Filter by status</label>
         <select
@@ -49,6 +49,7 @@ const Filter = ({ onFilterApply }) => {
       <button
         type='button'
         onClick={applyFilters}
+        className='text-white'
       >
         Apply filters
       </button>

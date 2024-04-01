@@ -12,7 +12,7 @@ const SearchBar = () => {
         name="name"
         placeholder="Search character.."
       />
-      <button type="submit">
+      <button className='text-white' type="submit">
         Search
       </button>
       <Filter onFilterApply={setResults} />

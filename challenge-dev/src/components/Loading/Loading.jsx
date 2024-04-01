@@ -1,11 +1,12 @@
-import landingImg from '../../imgs/loading.gif';
+import rickLoading from '../../imgs/rickLoading.gif';
 
 const Loading = () => {
   return (
-    <div>
-      <img src={landingImg} alt="Loading..." />
+    <div className='flex flex-col items-center justify-center h-screen'>
+      <img className='w-64 h-64 object-cover mb-4' src={rickLoading} alt='Rick Loading...' />
+      <h1 className='text-white text-2xl'>Loandig...</h1>
     </div>
   )
 }
 
-export default Loading
+export default Loading;
