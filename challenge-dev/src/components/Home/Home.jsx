@@ -8,11 +8,8 @@ const Home = () => {
   if (loading) return <Loading />;
   if (error) return <p>Error :{error.message}</p>;
 
-  return (
-    <div className="flex flex-wrap justify-center">
-      <SearchBar />
-    </div>
-  )
+  return  <SearchBar />
+
 
 };
 
