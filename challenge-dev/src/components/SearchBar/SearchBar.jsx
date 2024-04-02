@@ -4,7 +4,7 @@ import Filter from '../Filters/Filter';
 import { Search } from 'lucide-react';
 
 const SearchBar = () => {
-  const { handleSearch, setResults, results } = useSearchBar();
+  const { handleSearch, setResults, results, getAll } = useSearchBar();
 
   return (
     <>
@@ -20,12 +20,22 @@ const SearchBar = () => {
           name='name'
           placeholder='Search character...'
           style={{
-            borderRadius: '5px'
+            borderRadius: '5px',
+            outline: 'none',
+            boxShadow: 'none'
+          }}
+          onChange={async (event) => {
+            if (event.target.value === '') {
+              const { data } = await getAll({ variables: { page: 1 } });
+              if (data) {
+                setResults(data.characters.results);
+              }
+            }
           }}
         />
         <button
           style={{
-            backgroundColor:'#007bff',
+            backgroundColor: '#007bff',
             color: 'white',
             border: 'none',
             padding: '10px 20px',
@@ -48,4 +58,3 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
