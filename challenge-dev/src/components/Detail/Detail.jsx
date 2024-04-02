@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { X } from 'lucide-react';
 import useDetail from '../../hooks/useDetail';
 import Loading from '../Loading/Loading';
+import Error from '../Error/Error';
 
 const Detail = () => {
   const { id } = useParams();
@@ -9,7 +10,7 @@ const Detail = () => {
   const { loading, error, data } = useDetail(id);
 
   if (loading) return <Loading />;
-  if (error) return <p>Error :{error.message}</p>;
+  if (error) return <Error message={error.message}/>;
 
   return (
     <div className='flex items-center justify-center h-screen'>
