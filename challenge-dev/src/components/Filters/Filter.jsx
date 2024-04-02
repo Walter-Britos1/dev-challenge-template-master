@@ -1,7 +1,7 @@
 import useFilter from '../../hooks/useFilter';
 
 const Filter = ({ onFilterApply }) => {
-  const { handleFilterChange, applyFilters } = useFilter({ onFilterApply });
+  const { handleFilterChange, applyFilters, resetFilters, filterValues } = useFilter({ onFilterApply });
 
   return (
     <div className='w-full flex items-center space-x-4'
@@ -12,6 +12,7 @@ const Filter = ({ onFilterApply }) => {
       <div className='flex flex-col flex-grow'>
         <label className='text-gray-600 font-semibold' htmlFor='status'>Filter by status</label>
         <select
+          value={filterValues.status}
           className='px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'
           name='status'
           id='status'
@@ -27,6 +28,7 @@ const Filter = ({ onFilterApply }) => {
       <div className='flex flex-col flex-grow'>
         <label className='text-gray-600 font-semibold' htmlFor='species'>Filter by species</label>
         <select
+          value={filterValues.species}
           className='px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'
           name='species'
           id='species'
@@ -41,6 +43,7 @@ const Filter = ({ onFilterApply }) => {
       <div className='flex flex-col flex-grow'>
         <label className='text-gray-600 font-semibold' htmlFor='gender'>Filter by gender</label>
         <select
+          value={filterValues.gender}
           className='px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'
           name='gender'
           id='gender'
@@ -60,10 +63,15 @@ const Filter = ({ onFilterApply }) => {
       >
         Apply
       </button>
+      <button
+        type='button'
+        onClick={resetFilters}
+        className='mt-5 px-4 py-2 bg-red-500 text-white rounded-md focus:outline-none focus:ring focus:ring-blue-400'
+      >
+        Reset
+      </button>
     </div>
   );
 };
 
 export default Filter;
-
-
