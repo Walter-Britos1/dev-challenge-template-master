@@ -9,8 +9,6 @@ const Home = () => {
   if (error) return <p>Error :{error.message}</p>;
 
   return  <SearchBar />
-
-
 };
 
 export default Home;

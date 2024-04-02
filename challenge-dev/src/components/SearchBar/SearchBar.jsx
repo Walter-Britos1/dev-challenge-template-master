@@ -13,7 +13,8 @@ const SearchBar = () => {
           display: 'flex',
           justifyContent: 'end',
           padding: '10px',
-          borderRadius: '5px'
+          borderRadius: '5px',
+          boxSizing: 'border-box',
         }}>
         <input
           type='search'
