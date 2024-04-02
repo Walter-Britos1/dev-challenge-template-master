@@ -16,15 +16,12 @@ const SearchBar = () => {
           borderRadius: '5px',
           boxSizing: 'border-box',
         }}>
+          
         <input
           type='search'
           name='name'
           placeholder='Search character...'
-          style={{
-            borderRadius: '5px',
-            outline: 'none',
-            boxShadow: 'none'
-          }}
+          className="w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
           onChange={async (event) => {
             if (event.target.value === '') {
               const { data } = await getAll({ variables: { page: 1 } });
@@ -34,6 +31,7 @@ const SearchBar = () => {
             }
           }}
         />
+
         <button
           style={{
             backgroundColor: '#007bff',
