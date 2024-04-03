@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// Query para obtener todos los personajes 
 export const ALL_CHARACTERS = gql`
   query GetAllCharacters($page: Int!) {
     characters(page: $page) {
@@ -7,13 +8,12 @@ export const ALL_CHARACTERS = gql`
         id
         name
         image
-        status
       }
     }
   }
 `;
 
-
+// Query para buscar personajes por nombre 
 export const SEARCH_CHARACTER = gql`
   query SearchCharacter($name: String!) {
     characters(filter: { name: $name }) {
@@ -21,12 +21,12 @@ export const SEARCH_CHARACTER = gql`
         id
         name
         image
-        status
       }
     }
   }
 `;
 
+// Query para filtrar personajes
 export const FILTER_CHARACTERS = gql`
   query FilterCharacters($status: String, $species: String, $gender: String) {
     characters(filter: { status: $status, species: $species, gender: $gender }) {
@@ -34,12 +34,12 @@ export const FILTER_CHARACTERS = gql`
         id
         name
         image
-        status
       }
     }
   }
 `;
 
+// Query para obtener personaje mediante id
 export const GET_CHARACTER_BY_ID = gql`
   query GetCharacterById($id: ID!) {
     character(id: $id) {
