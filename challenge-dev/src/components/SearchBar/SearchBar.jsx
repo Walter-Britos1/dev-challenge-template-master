@@ -5,7 +5,7 @@ import { Search } from 'lucide-react';
 import { RotateCcw } from 'lucide-react';
 
 const SearchBar = () => {
-  const { handleSearch, setResults, results, getAll, error } = useSearchBar();
+  const { handleSearch, setResults, results, error, handleInputChange, } = useSearchBar();
 
   return (
     <>
@@ -23,14 +23,7 @@ const SearchBar = () => {
           name='name'
           placeholder='Search character...'
           className='w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300'
-          onChange={async (event) => {
-            if (event.target.value === '') {
-              const { data } = await getAll({ variables: { page: 1 } });
-              if (data) {
-                setResults(data.characters.results);
-              }
-            }
-          }}
+          onChange={handleInputChange}
         />
 
         <button

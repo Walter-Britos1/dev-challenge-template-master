@@ -37,12 +37,25 @@ const useSearchBar = () => {
     }
   }, [searchData]);
 
+  const resetResults = async () => {
+    const { data } = await getAll({variables: {page: 1}})
+    if (data) {
+      setResults(data.characters.results)
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    if (value === '') resetResults();
+  }
+
   return {
     handleSearch,
     setResults,
     results,
     getAll,
-    error 
+    error,
+    handleInputChange,
   }
 }
 
