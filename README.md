@@ -1,7 +1,7 @@
 # Desafío para Dev
 
 Nombre postulante: [Walter Britos]
-Link a la app en producción: [LINK DEL DEPLOY]
+Link a la app en producción: [https://rick-and-morty-web-cite.vercel.app/]
 
 ## Instrucciones
 
