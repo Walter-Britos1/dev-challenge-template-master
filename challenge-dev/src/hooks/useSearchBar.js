@@ -6,6 +6,7 @@ const useSearchBar = () => {
   const [getAll, { data: allData }] = useLazyQuery(ALL_CHARACTERS);
   const [search, { data: searchData }] = useLazyQuery(SEARCH_CHARACTER);
   const [results, setResults] = useState([]);
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     getAll({ variables: { page: 1 } });
@@ -25,17 +26,23 @@ const useSearchBar = () => {
     search({ variables: { name } });
   };
 
-
   useEffect(() => {
     if (searchData) {
-      setResults(searchData.characters.results);
+      if (searchData.characters.results.length > 0) { 
+        setResults(searchData.characters.results);
+        setError(null); 
+      } else { 
+        setError('No se encontraron personajes con ese nombre'); 
+      }
     }
   }, [searchData]);
+
   return {
     handleSearch,
     setResults,
     results,
-    getAll
+    getAll,
+    error 
   }
 }
 
