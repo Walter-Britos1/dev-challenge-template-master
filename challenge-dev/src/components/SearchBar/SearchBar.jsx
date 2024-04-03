@@ -5,7 +5,13 @@ import { Search } from 'lucide-react';
 import { RotateCcw } from 'lucide-react';
 
 const SearchBar = () => {
-  const { handleSearch, setResults, results, error, handleInputChange, } = useSearchBar();
+  const {
+    handleSearch, 
+    setResults, 
+    results, 
+    error, 
+    handleInputChange, 
+  } = useSearchBar();
 
   return (
     <>

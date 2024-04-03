@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useApolloClient } from '@apollo/client';
 import { ALL_CHARACTERS, SEARCH_CHARACTER } from '../graphql/queries';
 
 const useSearchBar = () => {
@@ -11,6 +11,9 @@ const useSearchBar = () => {
   const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
 
+  // Inicializamos el cliente para poder interactuar con la cache 
+  const client = useApolloClient();
+  
   // Obtener personajes al montar el componente
   useEffect(() => {
     getAll({ variables: { page: 1 } });
@@ -30,11 +33,15 @@ const useSearchBar = () => {
     // Crea un nuevo objeto para recopilar los datos del formulario de búsqueda
     const form = event.target;
     // Crea un nuevo obj para recopilar datos del formulario de busqueda
-    const formData = new FormData(form); 
+    const formData = new FormData(form);
     // Obtiene el valor del campo de entrada 'name' del formulario
-    const name = formData.get('name'); 
+    const name = formData.get('name');
     // Utiliza la función search de useLazyQuery para buscar personajes por el nombre
     search({ variables: { name } });
+    // Reseteamos la cache de la busqueda 
+    // Esto lo tuve que hacer porque despues de realizar una busqueda 
+    // con un nombre que anteriormente ya habia buscado, no me arrojaba ningun resultado
+    client.resetStore();
   };
 
   // Manejar resultados y errores de busqueda
