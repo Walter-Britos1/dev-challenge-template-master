@@ -10,7 +10,7 @@ const Filter = ({ onFilterApply }) => {
         borderRadius: '5px'
       }}>
       <div className='flex flex-col flex-grow'>
-        <label className='text-gray-600 font-semibold' htmlFor='status'>Filter by status</label>
+        <label className='text-green-500 font-semibold' htmlFor='status'>Filter by status</label>
         <select
           value={filterValues.status}
           className='px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'
@@ -26,7 +26,7 @@ const Filter = ({ onFilterApply }) => {
       </div>
 
       <div className='flex flex-col flex-grow'>
-        <label className='text-gray-600 font-semibold' htmlFor='species'>Filter by species</label>
+        <label className='text-green-500 font-semibold' htmlFor='species'>Filter by species</label>
         <select
           value={filterValues.species}
           className='px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'
@@ -41,7 +41,7 @@ const Filter = ({ onFilterApply }) => {
       </div>
 
       <div className='flex flex-col flex-grow'>
-        <label className='text-gray-600 font-semibold' htmlFor='gender'>Filter by gender</label>
+        <label className='text-green-500 font-semibold' htmlFor='gender'>Filter by gender</label>
         <select
           value={filterValues.gender}
           className='px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'

@@ -32,7 +32,7 @@ const useSearchBar = () => {
         setResults(searchData.characters.results);
         setError(null); 
       } else { 
-        setError('No se encontraron personajes con ese nombre'); 
+        setError('No characters with that name were found'); 
       }
     }
   }, [searchData]);

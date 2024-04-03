@@ -2,6 +2,7 @@ import useSearchBar from '../../hooks/useSearchBar';
 import Card from '../Card/Card';
 import Filter from '../Filters/Filter';
 import { Search } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 
 const SearchBar = () => {
   const { handleSearch, setResults, results, getAll, error } = useSearchBar();
@@ -49,8 +50,15 @@ const SearchBar = () => {
       <Filter onFilterApply={setResults} />
       <div className='flex flex-wrap justify-center'>
         {error ? ( // Si hay un error, muestra un mensaje de error
-          <div className='text-green-500'>
-            {error}
+          <div className='flex flex-col items-center justify-center text-green-500 text-xl p-8 rounded shadow-md w-1/3 text-center'>
+            <div>{error}</div>
+            <button
+              onClick={() => window.location.reload()}
+              className='mt-4 text-white font-bold py-2 px-4 rounded'
+              title='Refresh'
+            >
+              <RotateCcw />
+            </button>
           </div>
         ) : (
           results.map(character => (
@@ -58,6 +66,7 @@ const SearchBar = () => {
           ))
         )}
       </div>
+
     </>
   );
 };

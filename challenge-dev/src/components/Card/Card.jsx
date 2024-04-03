@@ -6,7 +6,7 @@ const Card = ({ character }) => {
       <Link to={`/${character.id}`}>
         <img className="w-full h-64 object-cover" src={character.image} alt={character.name} />
         <div className="px-6 py-4 absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent text-center">
-          <h2 className="font-bold text-xl mb-2 text-white">{character.name}</h2>
+          <h2 className="font-bold text-xl mb-2 text-green-400">{character.name}</h2>
         </div>
       </Link>
     </div>
